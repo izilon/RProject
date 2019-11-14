@@ -1,3 +1,0 @@
-library(dplyr)
-#library(na.tools)
-load("/home/izidorf/Dropbox/FCUP/Disciplinas/CC4024_DM_I/HandsOn/20191018/carIns_final.Rdata")
