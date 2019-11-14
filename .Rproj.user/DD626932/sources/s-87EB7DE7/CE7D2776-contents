@@ -1,0 +1,53 @@
+# datasets from a specific package
+data(package = "MASS")
+
+# from all packages
+data(package = .packages(all.available = TRUE))
+
+# load just a specific dataset from a package
+data(Animals, package = "MASS")
+
+#To load a specific dataset
+data (iris)
+
+#To load the 3 first results of a specific dataset
+head(iris, 3)
+
+#To load the 3 last results of a specific dataset
+tail (iris,3)
+
+# generate data frame with random values
+ds<-data.frame(x = rnorm(10), y = rnorm(10))
+
+#save the data frame to an RData file
+save(ds, file = "dummy.Rdata")
+head(ds, 3)
+
+#To load the data frame back into R:
+rm(ds) # remove the variable ds from the R environment
+ds
+load("dummy.Rdata")
+head(ds,3)
+
+ds <- read.csv("dummy.csv",header = TRUE)
+head(ds)
+data (package = "MASS")
+
+#some data manipulation
+head(iris)
+dim(iris)
+str(iris)
+summary(iris)
+
+library(dplyr)
+rm (iris)
+data(iris)
+ir <- tbl_df(iris)
+ir
+filter(ir, Sepal.Length > 6, Sepal.Width > 3.5)
+select(ir, Sepal.Length, Species)
+select(ir, starts_with("Sepal"))
+arrange(ir, desc(Sepal.Length), Sepal.Width)
+mutate(ir, sr = Sepal.Length/Sepal.Width, pr = Petal.Length/Petal.Width,
+       rat = sr/pr)
+summarise(ir, avgPL = mean(Petal.Length), varSW = var(Sepal.Width))

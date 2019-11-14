@@ -1,0 +1,27 @@
+
+library(devtools)
+library(dplyr)
+install.packages("githubinstall")
+
+install_github( "decisionpatterns/tidy/update")
+library(tidyumpute)
+
+##install.packages("na.tools")
+library('na.tools')
+
+load("carInsurance.Rdata")
+summary(carIns)
+
+##handling Missing Values
+carIns %% any_na()
+
+carIns %% filter_any_na() %% count()
+
+carIns_noNAS <- drop_rows_any_na(carIns)
+summary(carIns_noNAS)
+
+#Data Transformation
+library(dlookr)
+  
+  
+  
